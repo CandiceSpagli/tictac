@@ -13,9 +13,7 @@ function (err){
         console.log('----ERR', err)
     } else {
         console.log('CONNEXION REUSSIE')
-
     }
 }
-
 );
 

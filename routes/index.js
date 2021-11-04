@@ -1,7 +1,8 @@
+const { Router } = require('express');
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose')
-
+var userModel = require("../models/users")
 
 var journeySchema = mongoose.Schema({
   departure: String,
@@ -18,10 +19,61 @@ var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 
 
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+
+/*  SIGN UP*/
+router.post('/sign-up', async function(req,res,next){
+
+  var searchUser = await userModel.findOne({
+    email: req.body.emailFromFront
+  })
+  
+  if(!searchUser){
+    var newUser = new userModel({
+      username: req.body.usernameFromFront,
+      userfirtsname: req.body.userfirstnameFromFront,
+      email: req.body.emailFromFront,
+      password: req.body.passwordFromFront,
+    })
+  
+    var newUserSave = await newUser.save();
+  
+    req.session.users = {
+      name: newUserSave.username,
+      id: newUserSave._id,
+    }
+    console.log(req.session.user)
+  
+    res.redirect('/homepage')
+  } else {
+    res.redirect('/sign-in')
+  }
+  
+});
+
+/* SIGN-IN*/
+router.post('/sign-in', async function (req,res,next){
+  var searchUser = await userModel.findOne({
+    email: req.body.emailFromFront,
+    password : req.body.passwordFromFront,
+  })
+  console.log('---------', searchUser)
+  if(searchUser === null){
+    res.redirect('/')
+  }else{
+    res.redirect('/homepage')
+  }
+}
+);
+
+
+
+
 
 
 // Remplissage de la base de donnée, une fois suffit
