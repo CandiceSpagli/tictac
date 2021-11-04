@@ -3,6 +3,8 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose')
 var userModel = require("../models/users")
+var cityModel = require('../models/cities')
+
 
 var journeySchema = mongoose.Schema({
   departure: String,
@@ -75,6 +77,41 @@ router.post('/sign-in', async function (req,res,next){
 
 
 
+
+/*GET HomePage if user is alrealdy sign up */
+router.get('/homepage', function(req, res, next) {
+
+  res.render('homepage', { title: 'CONNECTED' });
+});
+
+/*GET pageproposition */
+router.post('/homefinal', async function(req, res, next) {
+  console.log("----- REQBODY CITY", req.body)
+
+// var departfromfront = req.body.departcity
+// var arrivalfromfront = req.body.finalcity
+// var datefromfront = req.body.calender
+
+var departbbd = await journeyModel.find({
+  departure : req.body.city,
+  arrival : req.body.finalcity,
+  date : req.body.calender
+})
+//  if (departbdd === undefined){
+//    console.log("trouveee", departbbd)
+//  }else{
+//    console.log("perdu")
+//  }
+
+
+console.log("------DEPART BDD", departbbd)
+
+
+  
+
+
+  res.render('oups', { title: 'CONNECTED' });
+});
 
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function(req, res, next) {

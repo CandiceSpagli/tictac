@@ -1,5 +1,9 @@
 body {
+  
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
+ 
+
 }
 
 a {
@@ -10,7 +14,7 @@ a {
   background-size: cover;
   background-position: center;
   background-image: linear-gradient(to bottom,  #7db9e8 0%,#7db9e8 15%,#7db9e8 15%,#7db9e8 39%,#1e5799 97%);  
-  padding : 0
+  padding : 0;
 }
 
 
@@ -19,4 +23,17 @@ a {
 .sign {
   display : flex;
 }
+/* 
+  background-image: #7db9e8;
+  background-image: -webkit-linear-gradient(top, #7db9e8 0%,#7db9e8 15%,#7db9e8 15%,#7db9e8 39%,#1e5799 97%);
+} */
+
+.imglandmark{
+
+  width: 300px;
+	height: 300px;
+  display : flex;
+  margin :  auto;
+}
+
 
