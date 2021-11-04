@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+   
+  </head>
+  <body>
+    
+    <div class="color">
+        <%-include('header')%>
+    
+        <h2 class = "text-white p-5">New-way ticket :</h2> 
+        <form action="/homefinal" method="POST">
+         <div class="container">
+            <div class="row">
+                <div class="col 4 text-center offset-1 p-5">
+                     <input name="departcity"type="text" class="form-control" placeholder="From : Paris, Marseille...">
+                </div>
+                
+            <div class="col 6 text-center p-5 d-inline-flex">
+                
+                <input name ="finalcity"type="text" class="form-control" placeholder="To : Lille, Nantes ...">
+                
+    
+            <form action="https://example.com">
+                <label>
+                  
+                  <input type="date" name="calender">
+                </label>
+              
+                <button type="submit" class="btn btn-danger">Go</button>
+              </form>
+            </div>
+            <div>
+                
+
+                
+            </div>
+
+      
+
+            </div> <!-- end row-->
+            <div>
+                <div>
+                    <img class= "imglandmark"src="/images/landmark.png">
+                </div>
+            </div>
+          </div> <!-- end container-->
+        </form>
+
+    </div> <!-- end color-->
+      
+     
+  </body>
+</html>

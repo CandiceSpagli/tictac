@@ -1,8 +1,26 @@
 body {
-  padding: 50px;
+  
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
+ 
+
 }
 
 a {
   color: #00B7FF;
 }
+
+.color {
+  background-image: #7db9e8;
+  background-image: -webkit-linear-gradient(top, #7db9e8 0%,#7db9e8 15%,#7db9e8 15%,#7db9e8 39%,#1e5799 97%);
+}
+
+.imglandmark{
+
+  width: 300px;
+	height: 300px;
+  display : flex;
+  margin :  auto;
+}
+
+
