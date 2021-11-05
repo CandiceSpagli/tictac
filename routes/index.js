@@ -88,25 +88,7 @@ router.get('/homepage', function(req, res, next) {
 router.post('/homefinal', async function(req, res, next) {
   console.log("----- REQBODY CITY", req.body)
 
-var departfromfront = req.body.departcity
-var arrivalfromfront = req.body.finalcity
-var datefromfront = req.body.calender
-console.log("-----DEPART ", departfromfront)
 
-var departbbd = await journeyModel.find()
-console.log("-----DEPARTBBD", departbbd)
-
-var citySaved = await departbbd.save();
-
-
-//  if (departbdd === undefined){
-//    console.log("trouveee", departbbd)
-//  }else{
-//    console.log("perdu")
-//  }
-
-
-console.log("------DEPART BDD", departbbd)
 
   res.render('oups');
 });
