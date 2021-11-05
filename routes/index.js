@@ -103,25 +103,37 @@ var departbdd = await journeyModel.find({
   arrival : arrivalfromfront,
   date : datefromfront
 })
-console.log(('BDD  depart', departbdd))
+console.log('BDD  depart', departbdd)
 
-if (departbdd.length === 0)
+  if (departbdd.length === 0)
   { res.redirect('/oups')
     console.log("VOYAGE perdu")
   }else{
-    res.redirect('/proposition')
+    res.render("proposition", {departbdd})
     console.log("VOYAGE trouveee")
   }
-
-console.log("------DEPART BDD", departbdd)
 });
 
 
+//PROPOSITION
+router.get('/proposition', async function(req, res, next) {
 
-router.get('/proposition', function(req, res, next) {
-  res.render('proposition', { title: 'Express' });
+console.log("FFDepart")
+
+  res.render('proposition');
 });
 
+
+//OUPS 
+router.get('/oups', function(req, res, next) {
+  res.render('oups', { title: 'Express' });
+});
+
+// confirmation
+
+router.get('/confirmation', function(req, res, next) {
+  res.render('confirmation', { title: 'My tickets' });
+});
 
 
 
