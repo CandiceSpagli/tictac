@@ -5,11 +5,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var session = require("express-session");
 var models = require('./routes/index')
 
 var app = express();
+
+
+app.use(
+  session({
+   secret: 'a4f8071f-c873-4447-8ee2',
+   resave: false,
+   saveUninitialized: false,
+  })
+  );
 
 
 // view engine setup

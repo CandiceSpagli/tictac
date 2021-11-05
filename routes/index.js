@@ -58,6 +58,8 @@ router.post('/sign-up', async function(req,res,next){
   
 });
 
+
+
 /* SIGN-IN*/
 router.post('/sign-in', async function (req,res,next){
   var searchUser = await userModel.findOne({
@@ -116,9 +118,37 @@ if (departbdd.length === 0)
 console.log("------DEPART BDD", departbdd)
 });
 
+// OUPS 
+
+router.get('/oups', function(req, res, next) {
+
+
+  res.render('oups');
+
+
+});
+// Confirmation
+router.get('/confirmation', function(req, res, next) {
+
+
+  res.render('confirmation');
+
+});
+
+// My Last Trip
+router.get('/mylasttrip', function(req, res, next) {
+
+
+  res.render('mylasttrip');
+
+});
+
+// Proposition
 
 
 router.get('/proposition', function(req, res, next) {
+
+
   res.render('proposition', { title: 'Express' });
 });
 
