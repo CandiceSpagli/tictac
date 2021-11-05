@@ -11,23 +11,20 @@ a {
 }
 
 .color {
-  background-size: cover;
+  background-size: 100vh;
+  min-height: 100vh;
   background-position: center;
-  background-image: linear-gradient(to bottom,  #7db9e8 0%,#7db9e8 15%,#7db9e8 15%,#7db9e8 39%,#1e5799 97%);  
+  background-image: #7db9e8;
+  background-image: -webkit-linear-gradient(top, #7db9e8 0%,#7db9e8 15%,#7db9e8 15%,#7db9e8 39%,#1e5799 97%);
   padding : 0;
   min-height : 100vh
 }
 
 
-
-
 .sign {
   display : flex;
 }
-/* 
-  background-image: #7db9e8;
-  background-image: -webkit-linear-gradient(top, #7db9e8 0%,#7db9e8 15%,#7db9e8 15%,#7db9e8 39%,#1e5799 97%);
-} */
+
 
 .imglandmark{
 

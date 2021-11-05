@@ -74,24 +74,56 @@ router.post('/sign-in', async function (req,res,next){
 );
 
 
-
-
-
-
 /*GET HomePage if user is alrealdy sign up */
 router.get('/homepage', function(req, res, next) {
 
   res.render('homepage', { title: 'CONNECTED' });
 });
 
+
 /*GET pageproposition */
 router.post('/homefinal', async function(req, res, next) {
   console.log("----- REQBODY CITY", req.body)
 
+var departfromfront = req.body.departcity;
+console.log("FFDepart", departfromfront)
+
+var arrivalfromfront = req.body.finalcity;
+console.log("FFArrival", arrivalfromfront)
+
+var datefromfront = req.body.calender;
+console.log("FFDATE", datefromfront)
+
+var journeyAskFF = {departfromfront, arrivalfromfront, datefromfront};
+console.log("FF  JOURNEY", journeyAskFF)
 
 
-  res.render('oups');
+var departbdd = await journeyModel.find({
+  departure : departfromfront,
+  arrival : arrivalfromfront,
+  date : datefromfront
+})
+console.log(('BDD  depart', departbdd))
+
+if (departbdd.length === 0)
+  { res.redirect('/oups')
+    console.log("VOYAGE perdu")
+  }else{
+    res.redirect('/proposition')
+    console.log("VOYAGE trouveee")
+  }
+
+console.log("------DEPART BDD", departbdd)
 });
+
+
+
+router.get('/proposition', function(req, res, next) {
+  res.render('proposition', { title: 'Express' });
+});
+
+
+
 
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function(req, res, next) {
