@@ -125,11 +125,35 @@ router.get('/oups', function(req, res, next) {
 
 
 });
+
 // Confirmation
 router.get('/confirmation', function(req, res, next) {
+  console.log("eq.query",req.query)
+  
+  var number = req.query.number
+  var departure = req.query.departure;
+  var arrival = req.query.arrival;
+  var price = req.query.price;
+  var date = req.query.date;
+  var schedule = req.query.schedule;
+
+  if(req.session.dataTrain===undefined){
+    req.session.dataTrain = []
+  }
+  req.session.dataTrain.push(
+    {number : req.query.number,
+    departure : req.query.departure,
+    arrival : req.query.arrival,
+    price : req.query.price,
+    date : req.query.date,
+    schedule : req.body.schedule,
+    })
+    
+    console.log("reqsessiondataTrain", req.session.dataTrain)
+  
 
 
-  res.render('confirmation');
+  res.render('confirmation', {dataTrain : req.session.dataTrain});
 
 });
 
@@ -159,6 +183,7 @@ router.get('/oups', function(req, res, next) {
 // confirmation
 
 router.get('/confirmation', function(req, res, next) {
+  console.log('train', req.query)
   res.render('confirmation', { title: 'My tickets' });
 });
 

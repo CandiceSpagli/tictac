@@ -14,7 +14,7 @@
     <%- include('header') %>
     <div class="color">
     
-        <div class="container">
+<div class="container">
 
 <h2 class ="text-white p-5"> My tickets : </h2>
 <table class="table table-borderless bg-white ">
@@ -28,27 +28,36 @@
       </tr>
     </thead>
     <tbody>
+      <% var total=0%>
+      <% for (var i = 0; i<dataTrain.length;i++){%>
       <tr>
-        <th scope="row">1</th>
-        <td>Paris/Lille</td>
-        <td>15.00 pm</td>
-        <td>19.00pm </td>
-        <td>93€</td>
-      </tr>
+
+          <td scope="row"><%=i+1%></td>
+          <td><%=dataTrain[i].departure%>/<%=dataTrain[i].arrival%></td>
+          <td><%=dataTrain[i].date%></td>
+          <td><%=dataTrain[i].schedule%>pm </td>
+          <td><%=dataTrain[i].price%></td>
+        </tr>
+         <%= total += Number(dataTrain[i].price)%>€
+        <%}%> 
+      
       <tr>
-        <th scope="row">1</th>
-        <td>Paris/Lille</td>
-        <td>15.00pm</td>
-        <td>19.00pm</td>
-        <td>93€</td>
-      </tr>
-      <tr>
-          <th scope="row" class="table-danger">Total : </th>
+          <th scope="row" class="table-danger">Total: </th>
           <td class="table-danger"></td>
           <td class="table-danger"></td>
           <td class="table-danger"></td>
-          <td class="table-danger"> 208 €</td>
+          <td class="table-danger"><%=total%>€</td>
+         
  
         </tr>
+           
     </tbody>
   </table>
+    <div class="row">
+      <div class="col offset-10">
+      <button type="submit" class="btn btn-danger">Confirm</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
