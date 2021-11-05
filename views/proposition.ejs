@@ -19,14 +19,23 @@
 <!-- titre -->
             <div class="row">
                 <div class="col">                    
-                    <h2 class = "text-white p-5">Tickets available on DATE :</h2> 
+                    <h2 class = "text-white p-5">Tickets available on <%=departbdd[0].date%> :</h2> 
             
 <!-- voyages trouves avec tarif et bouton -->
 
             <div class="row">
                 <div class="col">
-
-                    <button type="submit" class="btn btn-danger btn-sm" name="button"><i class="fas fa-sync-alt"></i></button> 
+                    <table class="table table-borderless bg-white rounded">  
+                        <% for ( var i = 0; i<departbdd.length; i++) { %>
+                        <tr>
+                            <th scope="row"><%=departbdd[i].departure%>/<%=departbdd[i].arrival%></th>
+                            <td>train departure at :  <%=departbdd[i].departureTime%> pm</td>
+                            <td><%=departbdd[i].price%> €</td>
+                            <td><input class="btn btn-danger" type="submit" value="OK"></td>
+                        </tr>   
+                        <%}%>  
+                      </table>
+                    
                 </div>
 
             </div>
