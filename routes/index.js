@@ -145,8 +145,7 @@ router.get('/mylasttrip', function(req, res, next) {
 
 //PROPOSITION
 router.get('/proposition', function(req, res, next) {
-
-
+  
   res.render('proposition', { title: 'Express' });
 });
 
@@ -155,6 +154,7 @@ router.get('/proposition', function(req, res, next) {
 router.get('/oups', function(req, res, next) {
   res.render('oups', { title: 'Express' });
 });
+
 
 // confirmation
 
