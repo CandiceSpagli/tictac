@@ -88,15 +88,17 @@ router.get('/homepage', function(req, res, next) {
 router.post('/homefinal', async function(req, res, next) {
   console.log("----- REQBODY CITY", req.body)
 
-// var departfromfront = req.body.departcity
-// var arrivalfromfront = req.body.finalcity
-// var datefromfront = req.body.calender
+var departfromfront = req.body.departcity
+var arrivalfromfront = req.body.finalcity
+var datefromfront = req.body.calender
+console.log("-----DEPART ", departfromfront)
 
-var departbbd = await journeyModel.find({
-  departure : req.body.city,
-  arrival : req.body.finalcity,
-  date : req.body.calender
-})
+var departbbd = await journeyModel.find()
+console.log("-----DEPARTBBD", departbbd)
+
+var citySaved = await departbbd.save();
+
+
 //  if (departbdd === undefined){
 //    console.log("trouveee", departbbd)
 //  }else{
@@ -106,11 +108,7 @@ var departbbd = await journeyModel.find({
 
 console.log("------DEPART BDD", departbbd)
 
-
-  
-
-
-  res.render('oups', { title: 'CONNECTED' });
+  res.render('oups');
 });
 
 // Remplissage de la base de donnée, une fois suffit
