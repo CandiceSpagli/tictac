@@ -74,44 +74,56 @@ router.post('/sign-in', async function (req,res,next){
 );
 
 
-
-
-
-
 /*GET HomePage if user is alrealdy sign up */
 router.get('/homepage', function(req, res, next) {
 
   res.render('homepage', { title: 'CONNECTED' });
 });
 
+
 /*GET pageproposition */
 router.post('/homefinal', async function(req, res, next) {
   console.log("----- REQBODY CITY", req.body)
 
-// var departfromfront = req.body.departcity
-// var arrivalfromfront = req.body.finalcity
-// var datefromfront = req.body.calender
+var departfromfront = req.body.departcity;
+console.log("FFDepart", departfromfront)
 
-var departbbd = await journeyModel.find({
-  departure : req.body.city,
-  arrival : req.body.finalcity,
-  date : req.body.calender
+var arrivalfromfront = req.body.finalcity;
+console.log("FFArrival", arrivalfromfront)
+
+var datefromfront = req.body.calender;
+console.log("FFDATE", datefromfront)
+
+var journeyAskFF = {departfromfront, arrivalfromfront, datefromfront};
+console.log("FF  JOURNEY", journeyAskFF)
+
+
+var departbdd = await journeyModel.find({
+  departure : departfromfront,
+  arrival : arrivalfromfront,
+  date : datefromfront
 })
-//  if (departbdd === undefined){
-//    console.log("trouveee", departbbd)
-//  }else{
-//    console.log("perdu")
-//  }
+console.log(('BDD  depart', departbdd))
 
+if (departbdd.length === 0)
+  { res.redirect('/oups')
+    console.log("VOYAGE perdu")
+  }else{
+    res.redirect('/proposition')
+    console.log("VOYAGE trouveee")
+  }
 
-console.log("------DEPART BDD", departbbd)
-
-
-  
-
-
-  res.render('oups', { title: 'CONNECTED' });
+console.log("------DEPART BDD", departbdd)
 });
+
+
+
+router.get('/proposition', function(req, res, next) {
+  res.render('proposition', { title: 'Express' });
+});
+
+
+
 
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function(req, res, next) {
